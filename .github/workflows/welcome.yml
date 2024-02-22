@@ -2,7 +2,6 @@ name: Post welcome comment
 on:
   pull_request:
     types: [opened]
-  workflow_dispatch:
 permissions:
   pull-requests: write
 jobs:
@@ -10,7 +9,6 @@ jobs:
     name: Post welcome comment
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - run: gh pr comment $PR_URL --body "Welcome to the repository!"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
